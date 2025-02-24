@@ -1,4 +1,4 @@
-name: Full workflow for creating digital ocean vps and configuring security and installing software
+name: Full workflow for creating digital ocean vps and configuring security and installing softwares
 
 jobs:
   Create-Vps:
