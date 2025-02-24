@@ -9,4 +9,8 @@ variable "ssh_keygen_fingerprint" {
   type        = string
 }
 
+variable "project_id" {
+  description = "DigitalOcean project ID"
+  type        = string
+}
 
