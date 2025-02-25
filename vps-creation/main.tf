@@ -1,3 +1,14 @@
+resource "digitalocean_firewall" "existing" {
+    name = "firewall"
+
+    inbound_rule {
+        protocol         = "tcp"
+        port_range       = "22"
+        source_addresses = ["0.0.0.0/0"]
+    }
+    
+    droplet_ids = [digitalocean_droplet.your_droplet.id]
+}
 resource "digitalocean_droplet" "grafana" {
     image    = "ubuntu-24-04-x64"
     name     = "grafana-server"
@@ -31,6 +42,7 @@ resource "digitalocean_record" "grafana_aaaa" {
 resource "digitalocean_project_resources" "grafana" {
     project = var.project_id
     resources = [
-        digitalocean_droplet.grafana.urn
+        digitalocean_droplet.grafana.urn,
+        digitalocean_domain.grafana.urn
     ]
 }

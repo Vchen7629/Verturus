@@ -1,0 +1,34 @@
+- name: Load env variables for username/password
+  include_vars:
+    file: "../../../../.env.yml"
+    name: env_vars
+
+- name: Create a new user
+  user: 
+    name: "{{ env_vars.New_User_Username }}"
+    shell: /bin/bash
+    groups: sudo
+    append: yes
+    create_home: yes
+    password: "{{ env_vars.New_User_Password | password_hash('sha512') }}"
+
+- name: Check new user's home directory permissions
+  command: ls -ld /home/{{ env_vars.New_User_Username }}
+  become: yes
+
+- name: Ensure .ssh directory exists for new user
+  file:
+    path: "/home/{{ env_vars.New_User_Username }}/.ssh"
+    state: directory
+    owner: "{{ env_vars.New_User_Username }}"
+    mode: 0700
+
+- name: Add public key to new user's authorized_keys
+  authorized_key:
+    user: "{{ env_vars.New_User_Username }}"
+    state: present
+    key: "{{ lookup('file', '/mnt/c/Users/Zephyr/.ssh/id_ed25519.pub') }}"
+
+- name: Success Msg
+  debug:
+    msg: "Successfully created a new User!"

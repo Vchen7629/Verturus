@@ -1,0 +1,23 @@
+- name: Disable SSH password authentication in sshd
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^#PasswordAuthentication"
+    line: "PasswordAuthentication no"
+    state: present
+  notify: Restart sshd
+
+- name: Disable Root User Login
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^PermitRootLogin"
+    line: "PermitRootLogin no"
+    state: present
+  notify: Restart sshd
+
+- name: Disable Pam Authentication
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^UsePam"
+    line: "UsePam no"
+    state: present
+  notify: Restart sshd

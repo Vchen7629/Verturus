@@ -7,6 +7,16 @@ terraform {
   }
 }
 
+terraform { 
+  cloud { 
+    organization = "Verturus" 
+
+    workspaces { 
+      name = "Grafana-monitoring-vps" 
+    } 
+  } 
+}
+
 provider "digitalocean" {
   token = var.do_token
 }
