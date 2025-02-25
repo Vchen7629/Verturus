@@ -1,6 +1,6 @@
 - name: Load env variables for username/password
   include_vars:
-    file: "../../../../.env.yml"
+    file: "../../../.env.yml"
     name: env_vars
 
 - name: Create a new user

@@ -6,8 +6,10 @@
       - curl
       - gnupg-agent
       - software-properties-common
-    state: present
-    update_cache: yes
+  retries: 5
+  delay: 10
+  register: apt_result
+  until: apt_result is succeeded
 
 - name: Add Docker's official GPG key
   apt_key:
@@ -28,6 +30,10 @@
       - containerd.io
     state: latest
     update_cache: yes
+  retries: 5
+  delay: 10
+  register: apt_result
+  until: apt_result is succeeded
 
 - name: check docker is active
   service:

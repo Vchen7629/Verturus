@@ -1,9 +1,9 @@
-- hosts: grafana-root
+- hosts: grafana_root
   become: yes
   roles: 
     - create_new_user
 
-- hosts: grafana-root
+- hosts: grafana_root
   become: yes
   roles:
     - harden-ssh
