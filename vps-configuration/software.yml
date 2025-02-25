@@ -2,3 +2,8 @@
   become: yes
   roles:
     - docker
+
+- hosts: grafana-new-user
+  become: yes
+  roles:
+    - grafana
