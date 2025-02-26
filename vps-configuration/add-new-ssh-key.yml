@@ -1,0 +1,4 @@
+- hosts: grafana-new-user
+  become: yes
+  roles:
+    - add_new_ssh_key
