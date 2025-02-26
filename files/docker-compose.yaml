@@ -3,19 +3,15 @@ services:
     image: traefik:v3.1
     container_name: traefik
     ports: 
-      - "443:443"
+      - "80:80"
       - "8080:8080"
     command: 
       - "--api.insecure=true"
       - "--providers.docker"
       - "--providers.docker.exposedbydefault=false"
-      - "--entryPoints.websecure.address=:443"
-      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
-      - "--certificatesresolvers.myresolver.acme.email=chenvincent7629@gmail.com"
-      - "--certificatesresolvers.myresolver.acme.storage=/acme.json"
+      - "--entryPoints.websecure.address=:80"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./traefik/acme.json:/acme.json
       - ./traefik/config:/config
   grafana: 
     image: grafana/grafana
@@ -23,7 +19,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.grafana.rule=Host(`www.verturus.com`) || Host(`verturus.com`)"
       - "traefik.http.routers.grafana.entrypoints=websecure"
-      - "traefik.http.routers.grafana.tls.certresolver=myresolver"
       - "traefik.http.services.grafana.loadbalancer.server.port=3000"
     tty: true
     stdin_open: true

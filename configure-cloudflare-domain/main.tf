@@ -7,6 +7,7 @@ resource "cloudflare_record" "a-record" {
     proxied = true
 }
 
+
 resource "cloudflare_record" "aaaa-record" {
     zone_id = var.cloudflare_zone_id
     name = "verturus.com"
@@ -65,4 +66,8 @@ resource "cloudflare_ruleset" "country_block_waf" {
         description = "Block China, Russia, North Korea, and Iran"
         enabled     = true
     }
+}
+
+resource "cloudflare" "name" {
+  
 }

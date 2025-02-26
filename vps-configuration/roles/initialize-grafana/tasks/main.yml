@@ -4,6 +4,12 @@
     dest: "./"
     mode: "777"
 
+- name: Copy env file to vps
+  copy: 
+    src: "../../../../files/.env"
+    dest: "./"
+    mode: "777"
+
 - name: Remove existing containers
   shell: docker compose down
   ignore_errors: yes

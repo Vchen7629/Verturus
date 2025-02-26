@@ -1,5 +1,5 @@
 .env.yml
-
+.env
 
 # Terraform files
 .terraform/
@@ -13,3 +13,5 @@ terraform.rc
 !terraform.tfvars
 .terraform.lock.hcl
 terraform.tfvars
+
+newuser.yaml
