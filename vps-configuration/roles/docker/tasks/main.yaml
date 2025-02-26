@@ -35,6 +35,16 @@
   register: apt_result
   until: apt_result is succeeded
 
+- name: Install Docker Compose Plugin
+  apt:
+    name: docker-compose-plugin
+    state: latest
+    update_cache: yes
+  retries: 5
+  delay: 5
+  register: apt_result
+  until: apt_result is succeeded
+
 - name: check docker is active
   service:
     name: docker

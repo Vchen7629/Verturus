@@ -1,0 +1,21 @@
+- name: Copy Docker Compose file to vps 
+  copy:
+    src: "../../../../files/docker-compose.yaml"
+    dest: "./"
+    mode: "777"
+
+- name: Remove existing containers
+  shell: docker compose down
+  ignore_errors: yes
+
+- name: Create directory for traefik
+  shell: mkdir -p traefik/config
+
+- name: Create file for acme json file to store certificates
+  shell: touch traefik/acme.json 
+
+- name: Set proper permissions for acme file
+  shell: chmod 600 traefik/acme.json
+
+- name: Run Docker Compose
+  shell: docker compose up -d

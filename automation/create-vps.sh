@@ -45,15 +45,15 @@ echo -e "${YELLOW}Creating terraform variables file${NC}"
 cd ../../configure-cloudflare-domain
 
 cat > ipaddresses.tfvars << EOF
-ipv4_address = ${IPV4_SERVER_IP}
-ipv6_address = ${IPV6_SERVER_IP}
+ipv4_address = "${IPV4_SERVER_IP}"
+ipv6_address = "${IPV6_SERVER_IP}"
 EOF
 
 echo -e "${GREEN} Terraform variables file created successfully!${NC}"
 echo -e "${YELLOW} Preparing to configure cloudflare domain...${NC}"
 
 terraform init
-terraform apply -var-file="cloudflare.tfvars" -var-file="ipaddresses.tfvars"
+terraform apply -var-file="cloudflare.tfvars" -var-file="ipaddresses.tfvars" -auto-approve
 
 echo -e "${YELLOW}Updating Ansible environment file with new IP...${NC}"
 cd ../vps-configuration
@@ -81,7 +81,7 @@ echo -e "${YELLOW}Creating a new non root user../${NC}"
 ansible-playbook -i inventory/rootuser.yml new-user.yml
 
 echo -e "${YELLOW}Installing Docker on VPS...${NC}"
-ansible-playbook -i inventory/newuser.yml software.yml --extra-vars "ansible_become_password={{ New_User_Password }}" --extra-vars "@../vps-configuration/.env.yml"
+ansible-playbook -i inventory/newuser.yml install-software.yml --extra-vars "ansible_become_password={{ New_User_Password }}" --extra-vars "@../vps-configuration/.env.yml"
 
 echo -e "${GREEN}Deployment Complete!${NC}"
 echo -e "${GREEN}Server running on IP: ${IPV4_SERVER_IP}${NC}"
