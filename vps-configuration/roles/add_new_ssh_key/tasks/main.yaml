@@ -1,2 +1,0 @@
-- name: Bring down Docker Containers
-  shell: docker compose down
