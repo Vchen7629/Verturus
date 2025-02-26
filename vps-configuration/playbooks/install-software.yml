@@ -1,9 +1,9 @@
 - hosts: grafana-new-user
   become: yes
   roles:
-    - docker
+    - ../roles/docker
 
 - hosts: grafana-new-user
   become: yes
   roles:
-    - grafana
+    - ../roles/grafana

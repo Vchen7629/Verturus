@@ -1,4 +1,4 @@
 - hosts: grafana-new-user
   become: yes
   roles: 
-    - initialize-grafana
+    - ../roles/initialize-grafana

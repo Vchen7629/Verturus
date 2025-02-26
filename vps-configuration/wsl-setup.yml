@@ -1,3 +1,0 @@
-- hosts: localhost
-  roles:
-    - copy_ssh_key_to_wsl
