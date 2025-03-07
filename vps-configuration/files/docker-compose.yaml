@@ -29,6 +29,23 @@ services:
     environment:
       - GF_SERVICE_ACCOUNTS_ENABLED=true
     restart: on-failure
+  prometheus:
+    image: prom/prometheus:latest
+    tty: true
+    stdin_open: true
+    ports:
+      - "9090:9090" 
+    volumes:
+      - ../monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    restart: on-failure
+    networks:
+      monitoring:
+        aliases:
+          - bitname/prometheus
 
 volumes:
   grafana-storage:
+
+networks:
+  monitoring:
+    name: monitoring

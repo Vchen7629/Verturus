@@ -1,12 +1,12 @@
 - name: Copy Docker Compose file to vps 
   copy:
-    src: "../../../../files/docker-compose.yaml"
+    src: "../../../files/docker-compose.yaml"
     dest: "./"
     mode: "777"
 
 - name: Copy env file to vps
   copy: 
-    src: "../../../../files/.env"
+    src: "../../../files/.env"
     dest: "./"
     mode: "777"
 

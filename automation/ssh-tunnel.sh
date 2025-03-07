@@ -10,7 +10,7 @@ sudo apt-get install autossh
 echo -e "${GREEN}Autossh installed Succesfully...${NC}"
 
 echo -e "${YELLOW}Preparing to set up ssh tunnel...${NC}"
-autossh -M 0 -N -o "ServerAliveInterval=15" -o "ServerAliveCountMax=3" -o "ExitOnForwardFailure=yes" -R 127.0.0.1:9091:localhost:9090 vchen7629@143.198.59.57 > autossh.log 2>&1 &
+autossh -M 0 -N -o "ServerAliveInterval=15" -o "ServerAliveCountMax=3" -o "ExitOnForwardFailure=yes" -R 127.0.0.1:19565:localhost:19565 vchen7629@143.198.59.57 > autossh.log 2>&1  &
 
 echo -e "${YELLOW}Configuring Socat...${NC}"
 cd ../vps-configuration

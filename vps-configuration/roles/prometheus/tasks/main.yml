@@ -1,0 +1,5 @@
+- name: Copy Prometheus Config file
+  copy:
+    src: "../../../files/prometheus.yml"
+    dest: "./"
+    mode: '777'

@@ -67,7 +67,3 @@ resource "cloudflare_ruleset" "country_block_waf" {
         enabled     = true
     }
 }
-
-resource "cloudflare" "name" {
-  
-}
