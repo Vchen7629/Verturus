@@ -34,7 +34,7 @@ services:
     tty: true
     stdin_open: true
     ports:
-      - "9090:9090" 
+      - "9091:9090" 
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     restart: on-failure
