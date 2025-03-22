@@ -1,5 +1,6 @@
 .env.yml
 .env
+grafana-token.txt
 
 # Terraform files
 .terraform/
@@ -15,3 +16,6 @@ terraform.rc
 terraform.tfvars
 
 newuser.yaml
+
+configure-grafana/grafana-token.txt
+
