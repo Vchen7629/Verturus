@@ -1,14 +1,14 @@
 - hosts: execution-user
   become: yes
-  roles:
-    - ../roles/docker
+  tasks:
+    - include_tasks: ../roles/monitoring-stack/tasks/docker.yaml
 
 - hosts: execution-user
   become: yes
-  roles:
-    - ../roles/grafana
+  tasks:
+    - include_tasks: ../roles/monitoring-stack/tasks/grafana.yaml
 
 - hosts: execution-user
   become: yes
-  roles:
-    - ../roles/prometheus
+  tasks:
+    - include_tasks: ../roles/monitoring-stack/tasks/prometheus.yaml

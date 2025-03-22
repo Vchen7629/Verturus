@@ -1,9 +1,9 @@
 - hosts: root-user
   become: yes
-  roles: 
-    - ../roles/create_new_user
+  tasks:
+  - include_tasks: ../roles/vps-configuration/tasks/createuser.yml
 
 - hosts: root-user
   become: yes
-  roles:
-    - ../roles/harden-ssh
+  tasks:
+  - include_tasks: ../roles/vps-configuration/tasks/harden-ssh.yml

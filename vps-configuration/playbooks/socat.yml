@@ -1,4 +1,4 @@
 - hosts: execution-user
   become: yes
-  roles:
-    - ../roles/socat
+  tasks:
+    - include_tasks: ../roles/vps-configuration/tasks/socat.yml

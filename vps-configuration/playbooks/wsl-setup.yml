@@ -1,3 +1,3 @@
 - hosts: execution-user
-  roles:
-    - ../roles/copy_ssh_key_to_wsl
+  tasks:
+  - include_tasks: ../roles/vps-configuration/tasks/copy-ssh-key.yml

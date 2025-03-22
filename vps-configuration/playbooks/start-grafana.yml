@@ -1,4 +1,4 @@
 - hosts: execution-user
   become: yes
-  roles: 
-    - ../roles/initialize-grafana
+  tasks:
+  - include_tasks: ../roles/monitoring-stack/tasks/initialize-Grafana.yml

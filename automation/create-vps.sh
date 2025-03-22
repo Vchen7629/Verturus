@@ -79,7 +79,7 @@ done
 echo -e "${YELLOW}Creating a new non root user../${NC}"
 ansible-playbook -i inventory/rootuser.yml playbooks/new-user.yml
 
-echo -e "${YELLOW}Installing Docker on VPS...${NC}"
+echo -e "${YELLOW}Installing Software on VPS...${NC}"
 ansible-playbook -i inventory/newuser.yml playbooks/install-software.yml --extra-vars "ansible_become_password={{ New_User_Password }}" --extra-vars "@../vps-configuration/.env.yml"
 
 echo -e "${GREEN}Deployment Complete!${NC}"
