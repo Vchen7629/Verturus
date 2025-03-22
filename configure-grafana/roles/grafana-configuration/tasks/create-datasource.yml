@@ -1,0 +1,14 @@
+- name: Read token from file
+  slurp:
+    src: "../grafana-token.txt"
+  register: grafana_token_file
+
+- name: Add Prometheus Datasource to Grafana Dashboard
+  community.grafana.grafana_datasource: 
+    name: "Prometheus Datasource"
+    ds_type: "prometheus"
+    ds_url: "http://prometheus:9090"
+    grafana_api_key: "{{ grafana_token_file.content | b64decode | trim }}"
+    grafana_url: "https://www.verturus.com"
+    uid: "PROMETHEUS_DS"
+

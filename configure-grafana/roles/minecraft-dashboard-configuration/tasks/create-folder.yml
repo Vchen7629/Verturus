@@ -1,0 +1,18 @@
+- name: Read token from file
+  slurp:
+    src: "../grafana-token.txt"
+  register: grafana_token_file
+
+- name: Create folder for minecraft monitoring
+  community.grafana.grafana_folder:
+    name: "Minecraft"
+    url: "https://www.verturus.com"
+    grafana_api_key: "{{ grafana_token_file.content | b64decode | trim }}"
+  register: folder_result
+
+- name: Save Folder Id to file
+  copy:
+    content: "{{ folder_result.folder.uid }}"
+    dest: "../folder-id.txt"
+    mode: '0600'
+  when: folder_result is changed or folder_result is success
