@@ -1,5 +1,5 @@
 ---
-grafana_root:
+root-user:
   hosts:
     143.198.59.57:
       ansible_user: root

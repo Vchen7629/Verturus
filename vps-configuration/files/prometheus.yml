@@ -4,6 +4,6 @@ global:
 scrape_configs:
 - job_name: 'minecraft'
   static_configs:
-    - targets: ['127.0.0.1:19565']
+    - targets: ['127.0.0.1:19566']
       labels:
         server_name: 'minecraft-docker'

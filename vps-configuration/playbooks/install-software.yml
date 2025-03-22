@@ -1,14 +1,14 @@
-- hosts: grafana-new-user
+- hosts: execution-user
   become: yes
   roles:
     - ../roles/docker
 
-- hosts: grafana-new-user
+- hosts: execution-user
   become: yes
   roles:
     - ../roles/grafana
 
-- hosts: grafana-new-user
+- hosts: execution-user
   become: yes
   roles:
     - ../roles/prometheus

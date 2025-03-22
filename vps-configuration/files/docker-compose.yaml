@@ -13,6 +13,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik/config:/config
+    networks:
+    - monitoring
   grafana: 
     image: grafana/grafana
     labels:
@@ -29,23 +31,28 @@ services:
     environment:
       - GF_SERVICE_ACCOUNTS_ENABLED=true
     restart: on-failure
+    networks:
+      monitoring:
+        aliases:
+          - grafana
   prometheus:
     image: prom/prometheus:latest
     tty: true
     stdin_open: true
     ports:
-      - "9091:9090" 
+      - "9095:9090" 
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     restart: on-failure
     networks:
       monitoring:
         aliases:
-          - bitname/prometheus
+          - prometheus
+
 
 volumes:
   grafana-storage:
-
+  
 networks:
   monitoring:
     name: monitoring

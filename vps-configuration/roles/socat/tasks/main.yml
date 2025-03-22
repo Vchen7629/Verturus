@@ -9,5 +9,5 @@
   until: apt_result is succeeded
 
 - name: Creating socat proxy
-  shell: socat TCP-LISTEN:19565,fork,reuseaddr TCP:127.0.0.1:19565 &
+  shell: socat TCP-LISTEN:19566,fork,reuseaddr TCP:127.0.0.1:19565 &
 

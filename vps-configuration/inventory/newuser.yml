@@ -1,5 +1,5 @@
 ---
-grafana-new-user:
+execution-user:
   hosts:
     143.198.59.57:
       ansible_user: vchen7629

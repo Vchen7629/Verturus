@@ -1,4 +1,4 @@
-- hosts: grafana-new-user
+- hosts: execution-user
   become: yes
   roles:
     - ../roles/socat
