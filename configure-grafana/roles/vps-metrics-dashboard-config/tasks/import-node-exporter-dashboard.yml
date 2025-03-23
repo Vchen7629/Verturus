@@ -21,6 +21,10 @@
   - name: Replace datasource
     set_fact:
       modified_json: "{{ dashboard_json.content | regex_replace('\\$\\{DS_LOCALHOST\\}', 'PROMETHEUS_DS') | from_json }}"
+    
+  - name: Replace Dashboard Name
+    set_fact:
+      modified_json: "{{ dashboard_json.content | regex_replace('\"title\":\\s*\"Node Exporter Full\"', '\"title\": \"Grafana-Vps\"') | from_json }}"
 
   - name: Remove id field from dashboard JSON
     set_fact:
