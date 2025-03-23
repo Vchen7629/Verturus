@@ -8,6 +8,7 @@ Verturus is my grafana/prometheus setup for monitoring projects hosted on a Digi
 <h3>Dependencies</h3>
 <h4>1) Terraform CLI installed: You can install terraform via https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli</h4>
 <h4>2) Ansible Installed </h4>
+<h4>3) Prometheus Ansible Community collection: to install run ansible-galaxy collection install prometheus.prometheus</h4>
 <h4>3) Digital Ocean Api key</h4>
 <h4>4) Cloudflare Api key</h4>
 
