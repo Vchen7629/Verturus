@@ -11,4 +11,9 @@
 - hosts: execution-user
   become: yes
   tasks:
-    - include_tasks: ../roles/monitoring-stack/tasks/prometheus.yaml
+    - include_tasks: ../roles/monitoring-stack/tasks/prometheus.yml
+
+- hosts: execution-user
+  become: yes
+  tasks: 
+    - include_tasks: ../roles/monitoring-stack/tasks/metrics.yaml

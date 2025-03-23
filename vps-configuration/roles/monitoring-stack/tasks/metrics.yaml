@@ -1,0 +1,3 @@
+- name: install and configure prometheus node exporter to export vps metrics
+  include_role:
+    name: prometheus.prometheus.node_exporter

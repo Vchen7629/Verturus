@@ -7,3 +7,6 @@ scrape_configs:
     - targets: ['127.0.0.1:19566']
       labels:
         server_name: 'minecraft-docker'
+- job_name: 'vps-metrics'
+  static_configs:
+    - targets: ['143.198.59.57:9100']
