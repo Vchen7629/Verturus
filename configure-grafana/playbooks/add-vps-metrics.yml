@@ -1,0 +1,9 @@
+- hosts: localhost
+  gather_facts: no
+  tasks:
+    - include_tasks: ../roles/vps-metrics-dashboard-config/tasks/create-folder.yml
+
+- hosts: localhost
+  gather_facts: no
+  tasks:
+    - include_tasks: ../roles/vps-metrics-dashboard-config/tasks/import-node-exporter-dashboard.yml

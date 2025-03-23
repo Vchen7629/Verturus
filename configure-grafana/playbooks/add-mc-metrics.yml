@@ -1,4 +1,9 @@
 - hosts: localhost
   gather_facts: no
   tasks:
+    - include_tasks: ../roles/minecraft-dashboard-configuration/tasks/create-folder.yml
+
+- hosts: localhost
+  gather_facts: no
+  tasks:
     - include_tasks: ../roles/minecraft-dashboard-configuration/tasks/import-mc-dashboard.yml

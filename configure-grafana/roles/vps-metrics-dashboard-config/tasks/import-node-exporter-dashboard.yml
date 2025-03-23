@@ -5,7 +5,7 @@
 
   - name: Get Folder Id from file
     slurp: 
-      src: "../mc-folder-id.txt"
+      src: "../vps-metrics-folder-id.txt"
     register: folder_result
 
   - name: Set folder id
@@ -14,13 +14,13 @@
 
   - name: Download dashboard JSON
     uri:
-      url: "https://grafana.com/api/dashboards/16508/revisions/1/download"
+      url: "https://grafana.com/api/dashboards/1860/revisions/37/download"
       return_content: yes
     register: dashboard_json
 
   - name: Replace datasource
     set_fact:
-      modified_json: "{{ dashboard_json.content | regex_replace('\\$\\{DS_PROMETHEUS\\}', 'PROMETHEUS_DS') | from_json }}"
+      modified_json: "{{ dashboard_json.content | regex_replace('\\$\\{DS_LOCALHOST\\}', 'PROMETHEUS_DS') | from_json }}"
 
   - name: Remove id field from dashboard JSON
     set_fact:

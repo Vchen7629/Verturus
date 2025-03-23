@@ -1,6 +1,5 @@
 .env.yml
 .env
-grafana-token.txt
 
 # Terraform files
 .terraform/
@@ -17,5 +16,8 @@ terraform.tfvars
 
 newuser.yaml
 
-configure-grafana/grafana-token.txt
+#grafana config files
+grafana-token.txt
 
+mc-folder-id.txt
+vps-metrics-folder-id.txt
