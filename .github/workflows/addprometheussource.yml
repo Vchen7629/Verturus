@@ -1,0 +1,35 @@
+name: CI workflow for updating prometheus data sources
+
+on:
+  push:
+    branches: 
+      - 'main'
+    paths:
+      - './vps-configuration/files/prometheus.yml'
+
+
+jobs:
+  update-prometheus-yml-file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: ss
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          port: 22
+          key: ${{ secrets.SSH_KEY }}
+          username: vchen7629
+          host: ${{ secrets.IP_ADDRESS }}
+          script: |
+            mkdir -p /tmp/prometheus-update
+
+            cp $GITHUB_WORKSPACE/vps-configuration/files/prometheus.yml /tmp/prometheus-update/
+            echo "${{ secrets.password }}" | sudo -S cp /tmp/prometheus-update/prometheus.yml /home/vchen7629/prometheus.yml
+
+            echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S docker compose restart
+            echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S rm rf /tmp/prometheus-update
+     
