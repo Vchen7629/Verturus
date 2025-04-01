@@ -36,5 +36,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            echo "${{ secrets.SUDO_PASSWORD }}" | sudo -S systemctl restart prometheus
+            echo "${{ secrets.password }}" | sudo -S systemctl restart prometheus
      
